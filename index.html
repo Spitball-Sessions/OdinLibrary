@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>My Library</title>
+    <link href="core.css" rel = "stylesheet">
+</head>
+<body>
+    <div class = "shelf" id = "shelf">
+       <p>This is a shelf.</p>
+    </div>
+    <div class = "form-container" id = "form-container">
+        <form>
+            <div id = "form-layout" class="form-layout">
+                <div id = "titleDiv" class = "inputs">
+                    <label for="title" class="form-labels">Title:</label>
+                    <input id = "title">
+                </div>
+                <div id = "authorDiv" class = "inputs">
+                    <label for = "author" class="form-labels">Author:</label>
+                    <input id = "author">
+                </div>
+                <div id = "pagesDiv" class= "inputs">
+                    <label for="pages" class="form-labels">Number of Pages:</label>
+                    <input type = "number" id = "pages" maxlength="5" min="1">
+                </div>
+                <div id = "statusDiv" class="inputs">
+                    <label for="readStatus" class="form-labels">Read?</label>
+                    <input type = "checkbox" id = "readStatus">
+                </div>
+            </div>
+            <button for = "book" id = "saveButton">Add to Library</button>
+        </form>
+    </div>
+</body>
+</html>
