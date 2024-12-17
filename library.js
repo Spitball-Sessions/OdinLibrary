@@ -30,9 +30,9 @@ function createBook(event){
     const pages = event.target.pageNum.value;
     const readState = event.target.readStatus.checked;
 
-    const newBook = new Book(title,author,pages,readState)
+    const newBook = new Book(title,author,pages,readState);
 
-    length = myLibrary.push(newBook)
+    length = myLibrary.push(newBook);
     event.target.reset();
 
     myLibrary.forEach(addBookToLibrary);
@@ -46,9 +46,22 @@ function openLibrary(){
     myLibrary.push(book1,book2,book3)
 }
 
+function changeStatus(event){
+    db(event.target.parentElement);
+    element = event.target.parentElement.querySelector(".readStatus");
+    db(element.textContent);
+
+    if(element.textContent.toLowerCase() == "read"){
+        element.textContent = "Unread"
+        event.target.textContent = "Mark Read"
+    }
+    else if(element.textContent.toLowerCase() == "unread"){
+        element.textContent = "Read"
+        event.target.textContent = "Mark Unread"
+    }
+}
+
 function addBookToLibrary(input){
-
-
     const bookCover = document.createElement("div");
     bookCover.setAttribute("id",input.title);
     bookCover.classList.add("book")
@@ -74,7 +87,17 @@ function addBookToLibrary(input){
         readStatus.textContent = "Unread";
     }
 
-    bookCover.append(title, author,pages,readStatus);
+    const b = document.createElement("button");
+    b.classList.add("statusChange")
+    b.setAttribute("id","status")
+    if(input.readState === true){
+        b.textContent = "Mark Unread";
+    }
+    else{
+        b.textContent = "Mark Read"
+    }
+
+    bookCover.append(title, author,pages,readStatus,b);
     shelves.appendChild(bookCover)
 
     db(bookCover)
@@ -88,3 +111,8 @@ myLibrary.forEach(addBookToLibrary)
 
 const bookForm = document.getElementById("new-book");
 bookForm.addEventListener("submit",createBook);
+
+const readButton = document.querySelectorAll(".statusChange")
+readButton.forEach((button)=>{
+    button.addEventListener("click",changeStatus)
+});

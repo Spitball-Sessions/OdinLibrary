@@ -8,6 +8,10 @@ body {
     overflow: hidden;
 }
 
+.grid>:hover{
+    box-shadow: 0px 0px 4px 4px green;
+}
+
 /*Shelf on Left Side of Screen*/
 #shelf{
     width: calc(65vw - 1rem);
