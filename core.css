@@ -4,21 +4,58 @@ body {
     background-color: sandybrown;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    flex-direction: row;
+    margin: 0px;
+    overflow: hidden;
 }
 
+/*Shelf on Left Side of Screen*/
 #shelf{
-    height: calc(100vh - 2rem);
     width: calc(65vw - 1rem);
-    display: grid;
+    height: calc(100vh - 2rem);
     background-color: wheat;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
 }
 
+.grid{
+    padding-left:calc((65vw - 2rem - 780px) / 2);;
+    width: calc(65vw - 1rem);
+    height: calc(100vh - 2rem);
+    display: grid;
+    grid-template-columns: repeat(4, 180px);
+    grid-template-rows: repeat(4, 300px);
+    align-items: center;
+    justify-items: center;
+    gap:20px 20px;
+    overflow-y: scroll;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.book{
+    height: 280px;
+    width: 180px;
+    background-color: dimgrey;
+    text-align: center;
+    word-wrap: normal;
+}
+
+.book > h2,
+.book > h3{
+    color: goldenrod;
+    margin: 3%;
+}
+
+/*Input on Right Side of Screen*/
 .form-container{
+    position: fixed;
+    top:1rem;
+    left:calc(100vw - calc(35vw) - 1rem);
     height: calc(100vh - 2rem);
     width: calc(35vw - 1rem);
     background-color: cadetblue;
