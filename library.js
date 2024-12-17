@@ -1,6 +1,7 @@
 const debug = true;
 const myLibrary = [];
 const shelves = document.getElementById("grid")
+let readButton = document.querySelectorAll(".statusChange")
 
 function db(input) {
     if (debug) console.log(input);
@@ -20,6 +21,15 @@ function clearLibrary(){
     shelves.innerHTML = "";
 }
 
+function addlisteners(){
+    db("I got here!")
+    readButton = document.querySelectorAll(".statusChange");
+    readButton.forEach((button) => {
+      button.removeEventListener("click", changeStatus); // Prevent duplicate listeners
+      button.addEventListener("click", changeStatus);
+    });
+}
+
 //logs the new Book and then clears the prompt screen.
 function createBook(event){
     event.preventDefault();
@@ -36,7 +46,10 @@ function createBook(event){
     event.target.reset();
 
     myLibrary.forEach(addBookToLibrary);
+    addlisteners();
 }
+
+
 
 function openLibrary(){
     book1 = new Book("The Hobbit","J R R Tolkien",320,true);
@@ -112,7 +125,7 @@ myLibrary.forEach(addBookToLibrary)
 const bookForm = document.getElementById("new-book");
 bookForm.addEventListener("submit",createBook);
 
-const readButton = document.querySelectorAll(".statusChange")
+
 readButton.forEach((button)=>{
     button.addEventListener("click",changeStatus)
 });
